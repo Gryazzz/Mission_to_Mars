@@ -4,10 +4,6 @@ import pandas as pd
 from selenium import webdriver
 import time
 
-def init_browser():
-    executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
-    return Browser("chrome", **executable_path, headless=False)
-
 def scrape():
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     browser = Browser("chrome", **executable_path, headless=False)
@@ -103,6 +99,17 @@ def scrape():
         
         time.sleep(3)
         
-    print(hemisphere_image_urls)    
+    print(hemisphere_image_urls)
+    
+    scrape_dic = {
+        'news_title': news_title,
+        'news_paragraph': news_p,
+        'weather': mars_weather,
+        'image': featured_image_url,
+        'facts_table': facts_table,
+        'hemispheres': hemisphere_image_urls
+    }  
+
+    return scrape_dic
 
 scrape()
