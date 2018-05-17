@@ -100,7 +100,7 @@ def scrape():
         time.sleep(3)
         
     print(hemisphere_image_urls)
-    
+
     scrape_dic = {
         'news_title': news_title,
         'news_paragraph': news_p,
@@ -112,4 +112,4 @@ def scrape():
 
     return scrape_dic
 
-scrape()
+
