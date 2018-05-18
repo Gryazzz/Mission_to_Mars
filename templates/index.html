@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>For Martians</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    
+</head>
+<body>
+    <div>
+        {% for m in mars_info %}
+            <h3>{{m.news_title}}</h3>
+            <p>{{m.news_paragraph}}></p>
+            <p>{{m.weather}}</p>
+
+            <div>
+                {{m.facts_table | safe}}
+            </div>
+
+            <div>
+                {% for h in m.hemispheres %}
+                <p>{{h.title}}</p>
+                <p>{{h.img_url}}</p>
+                {% endfor %}
+
+            </div>
+        {% endfor %}
+        </div>
+    
+</body>
+</html>
