@@ -8,7 +8,7 @@ mongo = PyMongo(mars)
 @mars.route('/')
 def home():
     mars_info = mongo.db.collection.find()
-    return jsonify(mars_info.news_title)
+    return render_template("index.html", mars_info = mars_info)
 
 @mars.route('/scrape')
 def scrape():
