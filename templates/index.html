@@ -10,24 +10,21 @@
 </head>
 <body>
     <div>
-        {% for m in mars_info %}
-            <h3>{{m.news_title}}</h3>
-            <p>{{m.news_paragraph}}></p>
-            <p>{{m.weather}}</p>
+        <h2>{{mars_info.news_title}}</h2>
+        <p>{{mars_info.news_paragraph}}</p>
+        <p>{{mars_info.weather}}</p>
 
-            <div>
-                {{m.facts_table | safe}}
-            </div>
-
-            <div>
-                {% for h in m.hemispheres %}
+        <div>
+                {{mars_info.facts_table | safe}}
+        </div>
+        <div>
+                {% for h in mars_info.hemispheres %}
                 <p>{{h.title}}</p>
                 <p>{{h.img_url}}</p>
                 {% endfor %}
 
-            </div>
-        {% endfor %}
         </div>
+    </div>
     
 </body>
 </html>
