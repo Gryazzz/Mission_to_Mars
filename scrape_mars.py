@@ -1,10 +1,12 @@
-from bs4 import BeautifulSoup
-from splinter import Browser
-import pandas as pd
-from selenium import webdriver
-import time
 
-def scrape():
+
+def scrape_mars():
+    from bs4 import BeautifulSoup
+    from splinter import Browser
+    import pandas as pd
+    from selenium import webdriver
+    import time
+
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     browser = Browser("chrome", **executable_path, headless=False)
 
@@ -22,8 +24,8 @@ def scrape():
     news_p = soup.find('ul', class_='item_list ').find('li', class_='slide')\
     .find('div', class_='article_teaser_body').get_text()
 
-    print(news_title)
-    print(news_p)
+    # print(news_title)
+    # print(news_p)
 
     # scraping weather
     url = 'https://twitter.com/marswxreport?lang=en'
@@ -37,7 +39,7 @@ def scrape():
             mars_weather = browser.find_by_css('div[class="js-tweet-text-container"]').find_by_css('p').text
             break
     
-    print(mars_weather)
+    # print(mars_weather)
 
     # scraping featured image
     url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
@@ -54,7 +56,7 @@ def scrape():
     featured_image_url = browser.find_by_css('div[id="page"]').find_by_css('section[class="content_page module"]')\
     .find_by_css('figure[class="lede"]').find_by_css('a')['href']
 
-    print(featured_image_url)
+    # print(featured_image_url)
 
     #scraping facts
     url = 'http://space-facts.com/mars/'
@@ -66,7 +68,7 @@ def scrape():
     df = df.set_index('Description')
 
     facts_table = df.to_html()
-    print(facts_table)
+    # print(facts_table)
 
     #scraping hemispheres
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
@@ -99,7 +101,7 @@ def scrape():
         
         time.sleep(3)
         
-    print(hemisphere_image_urls)
+    # print(hemisphere_image_urls)
 
     scrape_dic = {
         'news_title': news_title,
@@ -109,7 +111,6 @@ def scrape():
         'facts_table': facts_table,
         'hemispheres': hemisphere_image_urls
     }  
-
+    print('scrape dictionary is ready')
     return scrape_dic
-
 
