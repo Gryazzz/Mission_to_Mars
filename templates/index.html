@@ -6,34 +6,39 @@
     <title>Test Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> -->
-    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}">
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='styles/main.css') }}/> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static',filename='styles/main.css') }}"/>
     
 </head>
 <body>
+
     <div class="jumbotron text-center py-3">
+        
         <h4 class="display-4">Mars Information Online</h4>
         <p class="lead">On this web site you can find the actual information about the planet Mars</p>
         <hr class="my-2">
         <p>Click the button below to get the newest data:</p>
         <a class="btn btn-outline-warning btn-lg" href="/scrape" role="button">Renew</a>
-    </div>
-    
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h3 class="display-5">Featured Mars Image:</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-8 offset-xl-2 col-md-10 offset-md-1">
-                <img src={{mars_info.image}} class="img-responsive w-100" alt="Background image"/>
-            </div>
-        </div>
-
+        
     </div>
 
-    <div class="container-fluid bg-light text-dark mt-4">
+    <div class='wrapper'>    
+        <div class="container-fluid wrapper">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3 class="display-5">Featured Mars Image:</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-md-10 offset-md-1">
+                    <img src={{mars_info.image}} class="img-responsive w-100" alt="Background image"/>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid bg-light text-dark mt-5">
         <div class="row">
             <div class='col-12'>
                 <h3>Breaking News From Mars:</h3>
@@ -43,7 +48,7 @@
         </div>
     </div>
 
-    <div class="container mt-4">
+    <div class="container mt-5">
         <div class="row">
 
             <div class="col-md mb-4 text-left">
@@ -77,6 +82,7 @@
                                 </div>
                             {% endif %}
 
+                        {% endfor %}
 
                         <!-- <div class="row">
                             <div class="col-lg">
@@ -95,7 +101,7 @@
                             </div>  
                         </div> -->
                             <!-- </div> -->
-                        {% endfor %}
+                        
 
                     </div>
                 </div>
