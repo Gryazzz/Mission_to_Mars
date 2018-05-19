@@ -112,5 +112,7 @@ def scrape_mars():
         'hemispheres': hemisphere_image_urls
     }  
     print('scrape dictionary is ready')
+
+    browser.quit()
     return scrape_dic
 
