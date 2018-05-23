@@ -8,7 +8,7 @@ def scrape_mars():
     import time
 
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
-    browser = Browser("chrome", **executable_path, headless=False)
+    browser = Browser("chrome", **executable_path, headless=False, incognito=True)
 
     # scraping news
     url = 'https://mars.nasa.gov/news/'
@@ -34,12 +34,15 @@ def scrape_mars():
 
     tweet_features = 'Sol' and 'high' and 'low' and 'pressure' and 'hPa' and 'daylight'
     
-    for tweet in browser.find_by_css('ol[id="stream-items-id"]'):
-        if tweet_features in browser.find_by_css('div[class="js-tweet-text-container"]').find_by_css('p').text:
-            mars_weather = browser.find_by_css('div[class="js-tweet-text-container"]').find_by_css('p').text
+    html = browser.html
+    soup = BeautifulSoup(html, 'html.parser')
+
+    for tweet in soup.find_all('li', class_="js-stream-item stream-item stream-item "):
+        if tweet_features in tweet.find('div', class_='js-tweet-text-container').find('p').text:
+            mars_weather = tweet.find('div', class_='js-tweet-text-container').find('p').text
             break
     
-    # print(mars_weather)
+    print(mars_weather)
 
     # scraping featured image
     url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
